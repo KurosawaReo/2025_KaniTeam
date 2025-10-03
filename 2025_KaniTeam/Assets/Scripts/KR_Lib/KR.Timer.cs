@@ -64,7 +64,7 @@ namespace KR_Lib.Timer
     }
 
     /// <summary>
-    /// タイマー値.
+    /// タイマー管理用.
     /// </summary>
     public class TimerKR
     {
