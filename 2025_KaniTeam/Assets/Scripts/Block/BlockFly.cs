@@ -32,9 +32,11 @@ public class BlockFly : BlockBase
             //全ての子オブジェクト.
             for (int i = 0; i < cnt; i++)
             {
-                var obj = transform.GetChild(0); //先頭のobjを取得.
-                obj.SetParent(c.transform);      //衝突したobjに移動する.
+                var obj = transform.GetChild(0); //先頭のオブジェクトを取得.
+                obj.SetParent(c.transform);      //衝突したオブジェクトに移動する.
             }
+
+            Destroy(gameObject); //子オブジェクトを移動し終えたら、親は削除.
         }
     }
 }
