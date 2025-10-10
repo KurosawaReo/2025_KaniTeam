@@ -4,6 +4,7 @@
 TagManager:
   serializedVersion: 3
   tags:
+  - block_no_fly
   - Fish
   - Ground
   layers:
