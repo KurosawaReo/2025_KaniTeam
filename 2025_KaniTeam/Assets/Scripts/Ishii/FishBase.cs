@@ -6,14 +6,11 @@ public class FishBase : MonoBehaviour
 {
     // 動物タワーバトルみたいなゲームを作る
     [Header("Fish Base Settings")]
-    [SerializeField, Tooltip("重力")]                    protected float    gravity        = 0.5f;
-    [SerializeField, Tooltip("初期設定フラグ")]          protected bool     isSet          = false;
-    [SerializeField, Tooltip("オブジェクト接触フラグ")]  protected bool     isFirstContact = false;
-    [SerializeField, Tooltip("魚のサイズ")]              public    FishSize fishSize;
+    [SerializeField, Tooltip("重力")]                protected float    gravity   = 0.5f;
+    [SerializeField, Tooltip("初期設定フラグ")]      protected bool     isSet     = false;
+    [SerializeField, Tooltip("ドロップ済かどうか")]  protected bool     isDropped = false;
+    [SerializeField, Tooltip("魚のサイズ")]          public    FishSize fishSize;
     protected Rigidbody2D rb;
-
-
-
 
     protected virtual void Start()
     {
@@ -26,19 +23,18 @@ public class FishBase : MonoBehaviour
         rb.gravityScale = gravity;
     }
 
-
-
-
-
     protected virtual void Update()
     {
         if (!isSet) return;
         Move();
     }
 
+    /// <summary>
+    /// 移動処理用. 常に実行される.
+    /// </summary>
     protected virtual void Move()
     {
-        // 基本的な移動処理
+        //継承して使うこと想定.
     }
 
     /// <summary>
@@ -57,6 +53,9 @@ public class FishBase : MonoBehaviour
         //継承して使うこと想定.
     }
 
+    /// <summary>
+    /// 当たり判定処理.
+    /// </summary>
     protected virtual void OnCollisionEnter2D(Collision2D c)
     {
         //地面との接触.
@@ -64,14 +63,14 @@ public class FishBase : MonoBehaviour
         {
             Debug.Log("Groundと接触", this);
             HitGround(c);
-            isFirstContact = true; //接触済み.
+            isDropped = true; //ドロップ済み.
         }
         //魚との接触.
         if (c.gameObject.CompareTag("Fish"))
         {
             Debug.Log("Fishと接触", this);
             HitFish(c);
-            isFirstContact = true; //接触済み.
+            isDropped = true; //ドロップ済み.
         }
     }
 }
