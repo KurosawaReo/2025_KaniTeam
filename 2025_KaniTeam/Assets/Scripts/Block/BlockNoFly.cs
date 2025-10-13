@@ -7,15 +7,15 @@ using UnityEngine;
 /// <summary>
 /// 仮, こっちはブロックを吸収する側.
 /// </summary>
-public class BlockNoFly : BlockBase
+public class BlockNoFly : FishBase
 {
-    void Start()
+    protected override void Start()
     {
-        
+        base.Start(); //基底クラスのStart実行.
     }
 
-    void Update()
+    protected override void Update()
     {
-        
+        base.Update(); //基底クラスのUpdate実行.
     }
 }

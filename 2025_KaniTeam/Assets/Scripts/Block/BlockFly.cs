@@ -7,36 +7,32 @@ using UnityEngine;
 /// <summary>
 /// 仮, こっちはブロックを渡す側.
 /// </summary>
-public class BlockFly : BlockBase
+public class BlockFly : FishBase
 {
-    void Start()
+    protected override void Start()
     {
-        
+        base.Start(); //基底クラスのStart実行.
     }
 
-    void Update()
+    protected override void Update()
     {
-        
+        base.Update(); //基底クラスのUpdate実行.
     }
 
     /// <summary>
-    /// 衝突した時に作動.
+    /// 魚に接触した瞬間に実行される.
     /// </summary>
-    private void OnCollisionEnter2D(Collision2D c)
+    protected override void HitFish(Collision2D c)
     {
-        //設置されてるブロックなら.
-        if (c.gameObject.CompareTag("block_no_fly"))
+        //予め数を取得する(ループ中に数が変わるため)
+        int cnt = transform.childCount;
+        //全ての子オブジェクト.
+        for (int i = 0; i < cnt; i++)
         {
-            //予め数を取得する(ループ中に数が変わるため)
-            int cnt = transform.childCount;
-            //全ての子オブジェクト.
-            for (int i = 0; i < cnt; i++)
-            {
-                var obj = transform.GetChild(0); //先頭のオブジェクトを取得.
-                obj.SetParent(c.transform);      //衝突したオブジェクトに移動する.
-            }
-
-            Destroy(gameObject); //子オブジェクトを移動し終えたら、親は削除.
+            var obj = transform.GetChild(0); //先頭のオブジェクトを取得.
+            obj.SetParent(c.transform);      //衝突したオブジェクトに移動する.
         }
+
+        Destroy(gameObject); //子オブジェクトを移動し終えたら、親は削除.
     }
 }

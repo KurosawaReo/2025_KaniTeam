@@ -1081,7 +1081,7 @@ GameObject:
   - component: {fileID: 1784934960}
   m_Layer: 0
   m_Name: DropBlock
-  m_TagString: block_no_fly
+  m_TagString: Fish
   m_Icon: {fileID: 0}
   m_NavMeshLayer: 0
   m_StaticEditorFlags: 0
@@ -1098,6 +1098,10 @@ MonoBehaviour:
   m_Script: {fileID: 11500000, guid: 7dbdb8aa1f6cb02479aa2b378693a4c6, type: 3}
   m_Name: 
   m_EditorClassIdentifier: 
+  gravity: 0.5
+  isSet: 0
+  isFirstContact: 0
+  fishSize: 0
 --- !u!66 &1784934961
 CompositeCollider2D:
   m_ObjectHideFlags: 0
