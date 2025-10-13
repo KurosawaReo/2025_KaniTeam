@@ -1,8 +1,9 @@
 /*
    - KR_Lib.Object -
-   ver.2025/10/03
+   ver.2025/10/13
 */
 using UnityEngine;
+using UE = UnityEngine;
 using System;
 
 using KR_Lib.Position;
@@ -268,8 +269,8 @@ namespace KR_Lib.Object
         /// <returns>作成したprefab</returns>
         public GameObject NewPrefab()
         {
-            var obj = UnityEngine.Object.Instantiate(prefab); //生成.
-            obj.transform.SetParent(inObj.transform);         //親オブジェクトを設定.
+            var obj = UE.Object.Instantiate(prefab);  //生成.
+            obj.transform.SetParent(inObj.transform); //親オブジェクトを設定.
             return obj;
         }
     }
