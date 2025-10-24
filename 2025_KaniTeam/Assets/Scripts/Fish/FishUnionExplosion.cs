@@ -2,25 +2,20 @@ using UnityEngine;
 using static Common;
 
 [RequireComponent(typeof(PolygonCollider2D))]
-public class ExplosionFish : FishBase
+public class FishUnionExplosion : FishBase
 {
-    [Header("ExplosionFish Settings")]
-    [SerializeField, Tooltip("爆発力")]     private float explosionForce; // 爆発力
-    [SerializeField, Tooltip("爆発半径")]   private float explosionRadius; // 爆発半径
+    [Header("FishUnionExplosion Settings")]
+    [SerializeField, Tooltip("爆発力")] private float explosionForce; // 爆発力
+    [SerializeField, Tooltip("爆発半径")] private float explosionRadius; // 爆発半径
+    [SerializeField, Tooltip("合体フラグ")] private bool unionFlag = false; // 合体フラグ
 
-    // protected override void Update()
-    // {
-    //     if (Input.GetKeyDown(KeyCode.Return))
-    //     {
-    //         Detonate();
-    //     }
-    // }
-
-    protected override void Move()
+    protected override void Start()
     {
-        if (isDropped)
-            Detonate();
+        base.Start();
+        fishType = "UnionFish";
     }
+
+
 
 
 
@@ -63,6 +58,18 @@ public class ExplosionFish : FishBase
         }
     }
 
+
+    protected override void OnCollisionEnter2D(Collision2D c)
+    {
+        base.OnCollisionEnter2D(c);
+
+        if (c.gameObject.TryGetComponent<FishBase>(out var fish) && fish.fishType == "UnionFish" && !unionFlag)
+        {
+            Debug.Log("合体 : " + name, this);
+            unionFlag = true;
+            Detonate();
+        }
+    }
 
     void DeleteFish()
     {

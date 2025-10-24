@@ -2,9 +2,9 @@ using System.Collections;
 using System.Collections.Generic;
 using UnityEngine;
 
-public class PufferFish : FishBase
+public class FishPuffer : FishBase
 {
-    [Header("PufferFish Settings")]
+    [Header("FishPuffer Settings")]
     [SerializeField, Tooltip("地面や他の魚に接触したかどうか")] bool isContact = false;    // 地面や他の魚に接触したかどうか
     [SerializeField, Tooltip("膨らむ速度の調整用変数")]        float inflateRate = 1f;  // 膨らむ速度の調整用変数
     [SerializeField, Tooltip("最大膨張率 Rect")]                   float maxScale = 500.0f;     // 最大膨張率
