@@ -16,7 +16,7 @@ public class ExplosionFish : FishBase
 
     protected override void Move()
     {
-        if (isFirstContact)
+        if (isDropped)
             Detonate();
     }
 
