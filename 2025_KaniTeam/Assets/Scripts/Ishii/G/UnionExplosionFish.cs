@@ -1,18 +1,18 @@
 using UnityEngine;
 
-public class ExplosionFish : FishBase
+public class UnionExplosionFish : FishBase
 {
-    [Header("ExplosionFish Settings")]
-    [SerializeField, Tooltip("爆発力")]     private float explosionForce; // 爆発力
-    [SerializeField, Tooltip("爆発半径")]   private float explosionRadius; // 爆発半径
+    [Header("UnionExplosionFish Settings")]
+    [SerializeField, Tooltip("爆発力")]        private float explosionForce; // 爆発力
+    [SerializeField, Tooltip("爆発半径")]      private float explosionRadius; // 爆発半径
+    [SerializeField, Tooltip("合体フラグ")] private bool unionFlag = false; // 合体フラグ
 
-    protected override void Update()
+    protected override void Start()
     {
-        if (Input.GetKeyDown(KeyCode.Return))
-        {
-            Detonate();
-        }
+        base.Start();
+        fishType = "UnionFish";
     }
+
 
 
 
@@ -54,4 +54,18 @@ public class ExplosionFish : FishBase
             targetRigidbody.AddForce(explosionDirection.normalized * force, ForceMode2D.Impulse);
         }
     }
+
+
+    protected override void OnCollisionEnter2D(Collision2D c)
+    {
+        base.OnCollisionEnter2D(c);
+
+        if(c.gameObject.TryGetComponent<FishBase>(out var fish) && fish.fishType == "UnionFish" && !unionFlag)
+        {
+            Debug.Log("合体 : " + name, this);
+            unionFlag = true;
+            Detonate();
+        }
+    }
+
 }
