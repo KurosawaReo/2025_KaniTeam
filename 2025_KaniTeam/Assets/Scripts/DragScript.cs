@@ -5,30 +5,27 @@ using UnityEngine.EventSystems;
 
 public class DragScript : MonoBehaviour, IDragHandler, IBeginDragHandler, IEndDragHandler
 {
-
     private Vector2 prevPos; //保存しておく初期position
     private RectTransform rectTransform; // 移動したいオブジェクトのRectTransform
     private RectTransform parentRectTransform; // 移動したいオブジェクトの親(Panel)のRectTransform
 
-    [Header("Drag Settings")]
-    [SerializeField] private float minX = -350f;
-    [SerializeField] private float maxX = 350f;
-    [SerializeField] private float minY = 0f;
-    [SerializeField] private float maxY = 1310f;
-    [SerializeField] private float speed = 2f;
-    [SerializeField] private float rectTransformX = 90f;
+    [SerializeField] private float minX = -6f;
+    [SerializeField] private float maxX = 6f;
+    [SerializeField] private float minY = -5f;
+    [SerializeField] private float maxY = 5f;
+    [SerializeField] private float speed = 0.05f;
+//  [SerializeField] private float rectTransformX = -300f;
     [SerializeField] private bool isDragging = false;
     [SerializeField] private bool hasDraggingOnce = false;
     [SerializeField] private bool isFalling = false;
     [SerializeField] private float Bigsize = 3f;
     [SerializeField] private GameObject pazuruObject;
-
+    [SerializeField] private GameObject fish;
+    [SerializeField] private int Maxfishcount = 0;
 
     [SerializeField] public bool isGameOver = false;
 
-
-
-
+    private int fishCount = 0;
 
     private void Awake()
     {
@@ -38,8 +35,9 @@ public class DragScript : MonoBehaviour, IDragHandler, IBeginDragHandler, IEndDr
 
     void Start()
     {
-        rectTransform.anchoredPosition = new Vector2(rectTransformX,0);
         prevPos = rectTransform.anchoredPosition;
+
+        fishCount = Maxfishcount;
     }
 
     void Update()
@@ -63,7 +61,6 @@ public class DragScript : MonoBehaviour, IDragHandler, IBeginDragHandler, IEndDr
             float clampedY = Mathf.Clamp(rectTransform.anchoredPosition.y, minY, maxY);
             rectTransform.anchoredPosition = new Vector2(clampedX, rectTransform.anchoredPosition.y);
         }
-
     }
 
     // ドラッグ開始時の処理
@@ -75,7 +72,6 @@ public class DragScript : MonoBehaviour, IDragHandler, IBeginDragHandler, IEndDr
         isDragging = true;
         prevPos = rectTransform.anchoredPosition;
     }
-
 
     // ドラッグ中の処理
     public void OnDrag(PointerEventData eventData)
@@ -106,7 +102,6 @@ public class DragScript : MonoBehaviour, IDragHandler, IBeginDragHandler, IEndDr
         //Debug.Log(Mathf.Abs(localPos.y), this);
         //Debug.Log(isInsidePanel, this);
 
-
         if (isInsidePanel)
         {
             // パネル内 → 元に戻して再ドラッグ可能に
@@ -127,9 +122,27 @@ public class DragScript : MonoBehaviour, IDragHandler, IBeginDragHandler, IEndDr
 
             transform.localScale = new Vector3(Bigsize, Bigsize, 0);
         }
+        //prefabを召喚.
+        GameObject prefab = Instantiate(fish);
+        //召喚したprefabの座標を設定.
+        prefab.transform.position = transform.position;
 
+        fishCount -= 1; //置ける残り数-1.
+        //もう置けないなら.
+        if(fishCount <= 0)
+        {
+            gameObject.SetActive(false); //消去.
+        }
+        //まだ置けるなら.
+        else
+        {
+            isDragging = false;
+            hasDraggingOnce = false;
+            isFalling = false;
+            transform.localScale = new Vector3(1f, 1f, 0);
+            rectTransform.anchoredPosition = prevPos; //元の位置へ.
+        }
     }
-
 
     // ScreenPositionからlocalPositionへの変換関数
     private Vector2 GetLocalPosition(Vector2 screenPosition)
@@ -144,26 +157,23 @@ public class DragScript : MonoBehaviour, IDragHandler, IBeginDragHandler, IEndDr
 
     private void OnTriggerEnter2D(Collider2D collision)
     {
-        /*if(collision.gameObject.tag == "Panel")
-        {
-            isDragging = false;
-            hasDraggingOnce = false;
-            isFalling = false;
-            Debug.Log("当たり");
-            transform.localScale = new Vector3(1f, 1f, 0);
-        }*/
+        //if(collision.gameObject.tag == "Panel")
+        //{
+        //    isDragging = false;
+        //    hasDraggingOnce = false;
+        //    isFalling = false;
+        //    Debug.Log("当たり");
+        //   transform.localScale = new Vector3(1f, 1f, 0);
+        //}
 
-
-        if (collision.gameObject.CompareTag("GameOver"))
+        if (collision.gameObject.tag == ("GameOver"))
         {
             if(pazuruObject != null)
             {
                 Destroy(pazuruObject);
-                Debug.Log("GameOver");
+                Debug.Log("消えた");
                 isGameOver = true;
             }
         }
     }
 }
-
-

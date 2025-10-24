@@ -1,6 +1,6 @@
 %YAML 1.1
 %TAG !u! tag:unity3d.com,2011:
---- !u!1 &3731244659597771170
+--- !u!1 &7381785250183562233
 GameObject:
   m_ObjectHideFlags: 0
   m_CorrespondingSourceObject: {fileID: 0}
@@ -8,40 +8,45 @@ GameObject:
   m_PrefabAsset: {fileID: 0}
   serializedVersion: 6
   m_Component:
-  - component: {fileID: 7118674265363938436}
-  - component: {fileID: 6474235760625810071}
-  - component: {fileID: 7360001865302275503}
-  - component: {fileID: 8706327037434912829}
-  - component: {fileID: 2601485226448608375}
-  m_Layer: 0
-  m_Name: NormalFish
-  m_TagString: Finish
+  - component: {fileID: 655791275723737985}
+  - component: {fileID: 4051289536395045291}
+  - component: {fileID: 2665743055585596530}
+  - component: {fileID: 216053598020168287}
+  - component: {fileID: 1925293079010169787}
+  - component: {fileID: 3528124728910697452}
+  m_Layer: 5
+  m_Name: UI_Puffer
+  m_TagString: Untagged
   m_Icon: {fileID: 0}
   m_NavMeshLayer: 0
   m_StaticEditorFlags: 0
   m_IsActive: 1
---- !u!4 &7118674265363938436
-Transform:
+--- !u!224 &655791275723737985
+RectTransform:
   m_ObjectHideFlags: 0
   m_CorrespondingSourceObject: {fileID: 0}
   m_PrefabInstance: {fileID: 0}
   m_PrefabAsset: {fileID: 0}
-  m_GameObject: {fileID: 3731244659597771170}
-  serializedVersion: 2
-  m_LocalRotation: {x: 0, y: 0, z: 0, w: 1}
+  m_GameObject: {fileID: 7381785250183562233}
+  m_LocalRotation: {x: -0, y: -0, z: -0, w: 1}
   m_LocalPosition: {x: 0, y: 0, z: 0}
-  m_LocalScale: {x: 1, y: 1, z: 1}
-  m_ConstrainProportionsScale: 0
+  m_LocalScale: {x: 161, y: 161, z: 161}
+  m_ConstrainProportionsScale: 1
   m_Children: []
   m_Father: {fileID: 0}
   m_LocalEulerAnglesHint: {x: 0, y: 0, z: 0}
---- !u!212 &6474235760625810071
+  m_AnchorMin: {x: 0.5, y: 0.5}
+  m_AnchorMax: {x: 0.5, y: 0.5}
+  m_AnchoredPosition: {x: -231, y: -46}
+  m_SizeDelta: {x: 100, y: 100}
+  m_Pivot: {x: 0.5, y: 0.5}
+--- !u!212 &4051289536395045291
 SpriteRenderer:
   m_ObjectHideFlags: 0
   m_CorrespondingSourceObject: {fileID: 0}
   m_PrefabInstance: {fileID: 0}
   m_PrefabAsset: {fileID: 0}
-  m_GameObject: {fileID: 3731244659597771170}
+  m_GameObject: {fileID: 7381785250183562233}
   m_Enabled: 1
   m_CastShadows: 0
   m_ReceiveShadows: 0
@@ -78,43 +83,60 @@ SpriteRenderer:
   m_LightmapParameters: {fileID: 0}
   m_SortingLayerID: 0
   m_SortingLayer: 0
-  m_SortingOrder: 0
-  m_Sprite: {fileID: 1656739860305182063, guid: 1d190a08d5e41a34187857955bc39ddc, type: 3}
+  m_SortingOrder: 10
+  m_Sprite: {fileID: -8665046698189639132, guid: 7c1e9fbeaf9b04947a7a8e3414cc578d, type: 3}
   m_Color: {r: 1, g: 1, b: 1, a: 1}
   m_FlipX: 0
   m_FlipY: 0
   m_DrawMode: 0
-  m_Size: {x: 1, y: 1}
+  m_Size: {x: 2.82, y: 1.08}
   m_AdaptiveModeThreshold: 0.5
   m_SpriteTileMode: 0
   m_WasSpriteAssigned: 1
   m_MaskInteraction: 0
   m_SpriteSortPoint: 0
---- !u!114 &7360001865302275503
+--- !u!222 &2665743055585596530
+CanvasRenderer:
+  m_ObjectHideFlags: 0
+  m_CorrespondingSourceObject: {fileID: 0}
+  m_PrefabInstance: {fileID: 0}
+  m_PrefabAsset: {fileID: 0}
+  m_GameObject: {fileID: 7381785250183562233}
+  m_CullTransparentMesh: 1
+--- !u!114 &216053598020168287
 MonoBehaviour:
   m_ObjectHideFlags: 0
   m_CorrespondingSourceObject: {fileID: 0}
   m_PrefabInstance: {fileID: 0}
   m_PrefabAsset: {fileID: 0}
-  m_GameObject: {fileID: 3731244659597771170}
+  m_GameObject: {fileID: 7381785250183562233}
   m_Enabled: 1
   m_EditorHideFlags: 0
-  m_Script: {fileID: 11500000, guid: 8150169062b09ef4ba6e607dd1d80ebf, type: 3}
+  m_Script: {fileID: 11500000, guid: aa856a30eb28af14eaa523d2c79e142a, type: 3}
   m_Name: 
   m_EditorClassIdentifier: 
-  gravity: 0.5
-  isSet: 1
-  isDropped: 0
-  fishSize: 0
-  fishType: 
---- !u!50 &8706327037434912829
+  minX: -350
+  maxX: 350
+  minY: 0
+  maxY: 1310
+  speed: 2
+  rectTransformX: 90
+  isDragging: 0
+  hasDraggingOnce: 0
+  isFalling: 0
+  Bigsize: 2
+  pazuruObject: {fileID: 7381785250183562233}
+  fish: {fileID: 2046781936948137911, guid: f87152404d606134983e6fcabeb6e444, type: 3}
+  Maxfishcount: 1
+  isGameOver: 0
+--- !u!50 &1925293079010169787
 Rigidbody2D:
   serializedVersion: 5
   m_ObjectHideFlags: 0
   m_CorrespondingSourceObject: {fileID: 0}
   m_PrefabInstance: {fileID: 0}
   m_PrefabAsset: {fileID: 0}
-  m_GameObject: {fileID: 3731244659597771170}
+  m_GameObject: {fileID: 7381785250183562233}
   m_BodyType: 0
   m_Simulated: 1
   m_UseFullKinematicContacts: 0
@@ -122,7 +144,7 @@ Rigidbody2D:
   m_Mass: 1
   m_LinearDamping: 0
   m_AngularDamping: 0.05
-  m_GravityScale: 1
+  m_GravityScale: 0
   m_Material: {fileID: 0}
   m_IncludeLayers:
     serializedVersion: 2
@@ -134,13 +156,13 @@ Rigidbody2D:
   m_SleepingMode: 1
   m_CollisionDetection: 0
   m_Constraints: 0
---- !u!60 &2601485226448608375
-PolygonCollider2D:
+--- !u!61 &3528124728910697452
+BoxCollider2D:
   m_ObjectHideFlags: 0
   m_CorrespondingSourceObject: {fileID: 0}
   m_PrefabInstance: {fileID: 0}
   m_PrefabAsset: {fileID: 0}
-  m_GameObject: {fileID: 3731244659597771170}
+  m_GameObject: {fileID: 7381785250183562233}
   m_Enabled: 1
   serializedVersion: 3
   m_Density: 1
@@ -164,7 +186,7 @@ PolygonCollider2D:
   m_CallbackLayers:
     serializedVersion: 2
     m_Bits: 4294967295
-  m_IsTrigger: 0
+  m_IsTrigger: 1
   m_UsedByEffector: 0
   m_CompositeOperation: 0
   m_CompositeOrder: 0
@@ -172,20 +194,11 @@ PolygonCollider2D:
   m_SpriteTilingProperty:
     border: {x: 0, y: 0, z: 0, w: 0}
     pivot: {x: 0.5, y: 0.5}
-    oldSize: {x: 0.96666664, y: 0.53333336}
-    newSize: {x: 1, y: 1}
+    oldSize: {x: 1.0384616, y: 0.7692308}
+    newSize: {x: 2.82, y: 1.08}
     adaptiveTilingThreshold: 0.5
     drawMode: 0
     adaptiveTiling: 0
   m_AutoTiling: 0
-  m_Points:
-    m_Paths:
-    - - {x: 0.36111113, y: 0.26666668}
-      - {x: -0.28333333, y: 0.26666668}
-      - {x: -0.48333335, y: 0.044444446}
-      - {x: -0.48333335, y: -0.044444446}
-      - {x: -0.28333333, y: -0.26666668}
-      - {x: 0.17222223, y: -0.26666668}
-      - {x: 0.48333335, y: -0.14444445}
-      - {x: 0.48333335, y: 0.21111111}
-  m_UseDelaunayMesh: 0
+  m_Size: {x: 1, y: 1}
+  m_EdgeRadius: 0
