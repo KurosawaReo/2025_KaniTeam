@@ -29,6 +29,5 @@ public class PanelManagement : MonoBehaviour
         // Ø‚è‘Ö‚¦Às
         panel1.SetActive(isPanel1Active);
         panel2.SetActive(!isPanel1Active);
-
     }
 }
