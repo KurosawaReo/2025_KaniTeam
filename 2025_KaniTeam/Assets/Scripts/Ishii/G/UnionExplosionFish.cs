@@ -1,10 +1,12 @@
 using UnityEngine;
+using static Common;
 
+[RequireComponent(typeof(PolygonCollider2D))]
 public class UnionExplosionFish : FishBase
 {
     [Header("UnionExplosionFish Settings")]
-    [SerializeField, Tooltip("爆発力")]        private float explosionForce; // 爆発力
-    [SerializeField, Tooltip("爆発半径")]      private float explosionRadius; // 爆発半径
+    [SerializeField, Tooltip("爆発力")] private float explosionForce; // 爆発力
+    [SerializeField, Tooltip("爆発半径")] private float explosionRadius; // 爆発半径
     [SerializeField, Tooltip("合体フラグ")] private bool unionFlag = false; // 合体フラグ
 
     protected override void Start()
@@ -36,7 +38,8 @@ public class UnionExplosionFish : FishBase
         }
 
         // 爆弾オブジェクトを破棄
-        Destroy(gameObject);
+        //Destroy(gameObject);
+        DeleteFish();
     }
 
     // 吹き飛ばしの処理
@@ -60,12 +63,20 @@ public class UnionExplosionFish : FishBase
     {
         base.OnCollisionEnter2D(c);
 
-        if(c.gameObject.TryGetComponent<FishBase>(out var fish) && fish.fishType == "UnionFish" && !unionFlag)
+        if (c.gameObject.TryGetComponent<FishBase>(out var fish) && fish.fishType == "UnionFish" && !unionFlag)
         {
             Debug.Log("合体 : " + name, this);
             unionFlag = true;
             Detonate();
         }
+    }
+
+    void DeleteFish()
+    {
+        rb.simulated = false;
+        GetComponent<PolygonCollider2D>().enabled = false;
+
+        transform.position = new Vector3(DELETE_OBJECT_POS_X, DELETE_OBJECT_POS_Y, 0);
     }
 
 }

@@ -103,9 +103,10 @@ MonoBehaviour:
   m_Name: 
   m_EditorClassIdentifier: 
   gravity: 0.5
-  isSet: 0
-  isFirstContact: 0
+  isSet: 1
+  isDropped: 0
   fishSize: 0
+  fishType: 
 --- !u!50 &8706327037434912829
 Rigidbody2D:
   serializedVersion: 5

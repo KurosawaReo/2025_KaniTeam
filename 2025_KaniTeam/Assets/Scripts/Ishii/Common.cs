@@ -15,4 +15,14 @@ public class Common
         Large
     }
 
+    public enum GameState
+    {
+        Playing,
+        GameOver,
+        GameClear
+    }
+
+    public const int DELETE_OBJECT_POS_X = 0;
+    public const int DELETE_OBJECT_POS_Y = 50;
+
 }

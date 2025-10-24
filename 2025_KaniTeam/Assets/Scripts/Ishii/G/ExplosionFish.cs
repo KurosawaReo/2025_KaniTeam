@@ -1,5 +1,7 @@
 using UnityEngine;
+using static Common;
 
+[RequireComponent(typeof(PolygonCollider2D))]
 public class ExplosionFish : FishBase
 {
     [Header("ExplosionFish Settings")]
@@ -16,7 +18,7 @@ public class ExplosionFish : FishBase
 
     protected override void Move()
     {
-        if (isFirstContact)
+        if (isDropped)
             Detonate();
     }
 
@@ -41,7 +43,8 @@ public class ExplosionFish : FishBase
         }
 
         // 爆弾オブジェクトを破棄
-        Destroy(gameObject);
+        //Destroy(gameObject);
+        DeleteFish();
     }
 
     // 吹き飛ばしの処理
@@ -59,4 +62,14 @@ public class ExplosionFish : FishBase
             targetRigidbody.AddForce(explosionDirection.normalized * force, ForceMode2D.Impulse);
         }
     }
+
+
+    void DeleteFish()
+    {
+        rb.simulated = false;
+        GetComponent<PolygonCollider2D>().enabled = false;
+
+        transform.position = new Vector3(DELETE_OBJECT_POS_X, DELETE_OBJECT_POS_Y, 0);
+    }
+
 }
