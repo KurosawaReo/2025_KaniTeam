@@ -10,10 +10,10 @@ GameObject:
   m_Component:
   - component: {fileID: 8456765754426937405}
   - component: {fileID: 2613603034188847501}
-  - component: {fileID: 2504619187451347516}
-  - component: {fileID: 752247471904721957}
+  - component: {fileID: -2478306302537857532}
+  - component: {fileID: -7279315103766955348}
   m_Layer: 0
-  m_Name: DropBlock
+  m_Name: FishKyubankoban
   m_TagString: Fish
   m_Icon: {fileID: 0}
   m_NavMeshLayer: 0
@@ -29,8 +29,8 @@ Transform:
   serializedVersion: 2
   m_LocalRotation: {x: -0, y: -0, z: -0, w: 1}
   m_LocalPosition: {x: 0, y: 0, z: 0}
-  m_LocalScale: {x: 1, y: 1, z: 1}
-  m_ConstrainProportionsScale: 0
+  m_LocalScale: {x: 1.5, y: 1.5, z: 1.5}
+  m_ConstrainProportionsScale: 1
   m_Children:
   - {fileID: 8706897232554575869}
   m_Father: {fileID: 0}
@@ -62,7 +62,7 @@ Rigidbody2D:
   m_SleepingMode: 1
   m_CollisionDetection: 0
   m_Constraints: 0
---- !u!66 &2504619187451347516
+--- !u!66 &-2478306302537857532
 CompositeCollider2D:
   m_ObjectHideFlags: 0
   m_CorrespondingSourceObject: {fileID: 0}
@@ -97,31 +97,17 @@ CompositeCollider2D:
   m_CompositeOperation: 0
   m_CompositeOrder: 0
   m_Offset: {x: 0, y: 0}
-  m_GeometryType: 1
+  m_GeometryType: 0
   m_GenerationType: 0
   m_EdgeRadius: 0
-  m_ColliderPaths:
-  - m_Collider: {fileID: 426536829768164115}
-    m_ColliderPaths:
-    - - X: 18916498
-        Y: 5836999
-      - X: -18916498
-        Y: 5836999
-      - X: -18916498
-        Y: -5836999
-      - X: 18916498
-        Y: -5836999
+  m_ColliderPaths: []
   m_CompositePaths:
-    m_Paths:
-    - - {x: 1.8916204, y: -0.5836999}
-      - {x: 1.8916204, y: 0.5836999}
-      - {x: -1.8916498, y: 0.5836706}
-      - {x: -1.8916204, y: -0.5836999}
+    m_Paths: []
   m_VertexDistance: 0.0005
   m_OffsetDistance: 0.00005
   m_UseDelaunayMesh: 0
   m_CompositeGameObject: {fileID: 1543752648670887702}
---- !u!114 &752247471904721957
+--- !u!114 &-7279315103766955348
 MonoBehaviour:
   m_ObjectHideFlags: 0
   m_CorrespondingSourceObject: {fileID: 0}
@@ -130,12 +116,12 @@ MonoBehaviour:
   m_GameObject: {fileID: 1543752648670887702}
   m_Enabled: 1
   m_EditorHideFlags: 0
-  m_Script: {fileID: 11500000, guid: 9dfc15d646e626f41a9f9c1d691314a7, type: 3}
+  m_Script: {fileID: 11500000, guid: 23efba3f7fc518740bef1d1a6f8dcabc, type: 3}
   m_Name: 
   m_EditorClassIdentifier: 
   gravity: 0.5
   isSet: 0
-  isFirstContact: 0
+  isDropped: 0
   fishSize: 0
 --- !u!1 &2409279290551265036
 GameObject:
@@ -147,10 +133,10 @@ GameObject:
   m_Component:
   - component: {fileID: 8706897232554575869}
   - component: {fileID: 4098103618828847255}
-  - component: {fileID: 426536829768164115}
+  - component: {fileID: 1976115578510261407}
   m_Layer: 0
-  m_Name: SquareTest
-  m_TagString: Untagged
+  m_Name: HitK
+  m_TagString: HitKyubankoban
   m_Icon: {fileID: 0}
   m_NavMeshLayer: 0
   m_StaticEditorFlags: 0
@@ -165,7 +151,7 @@ Transform:
   serializedVersion: 2
   m_LocalRotation: {x: 0, y: 0, z: 0, w: 1}
   m_LocalPosition: {x: 0, y: 0, z: 0}
-  m_LocalScale: {x: 3.7832994, y: 1.1673998, z: 1}
+  m_LocalScale: {x: 1, y: 1, z: 1}
   m_ConstrainProportionsScale: 0
   m_Children: []
   m_Father: {fileID: 8456765754426937405}
@@ -214,7 +200,7 @@ SpriteRenderer:
   m_SortingLayerID: 0
   m_SortingLayer: 0
   m_SortingOrder: 0
-  m_Sprite: {fileID: 7482667652216324306, guid: 311925a002f4447b3a28927169b83ea6, type: 3}
+  m_Sprite: {fileID: 1361444060168015258, guid: 3d0ed157562af57449b5fca4df2e3f58, type: 3}
   m_Color: {r: 1, g: 1, b: 1, a: 1}
   m_FlipX: 0
   m_FlipY: 0
@@ -225,8 +211,8 @@ SpriteRenderer:
   m_WasSpriteAssigned: 1
   m_MaskInteraction: 0
   m_SpriteSortPoint: 0
---- !u!61 &426536829768164115
-BoxCollider2D:
+--- !u!60 &1976115578510261407
+PolygonCollider2D:
   m_ObjectHideFlags: 0
   m_CorrespondingSourceObject: {fileID: 0}
   m_PrefabInstance: {fileID: 0}
@@ -257,17 +243,38 @@ BoxCollider2D:
     m_Bits: 4294967295
   m_IsTrigger: 0
   m_UsedByEffector: 0
-  m_CompositeOperation: 1
+  m_CompositeOperation: 0
   m_CompositeOrder: 0
   m_Offset: {x: 0, y: 0}
   m_SpriteTilingProperty:
     border: {x: 0, y: 0, z: 0, w: 0}
     pivot: {x: 0.5, y: 0.5}
-    oldSize: {x: 1, y: 1}
+    oldSize: {x: 1.32, y: 0.6}
     newSize: {x: 1, y: 1}
     adaptiveTilingThreshold: 0.5
     drawMode: 0
     adaptiveTiling: 0
   m_AutoTiling: 0
-  m_Size: {x: 1, y: 1}
-  m_EdgeRadius: 0
+  m_Points:
+    m_Paths:
+    - - {x: 0.65372634, y: 0.07981173}
+      - {x: 0.4986072, y: 0.0329486}
+      - {x: 0.40683803, y: 0.031794384}
+      - {x: 0.19195732, y: 0.22999999}
+      - {x: 0.1094102, y: 0.13117942}
+      - {x: 0.0522981, y: 0.13714564}
+      - {x: -0.08, y: 0.29999998}
+      - {x: -0.17999999, y: 0.29999998}
+      - {x: -0.17999999, y: 0.28}
+      - {x: -0.11629872, y: 0.14549564}
+      - {x: -0.3796237, y: 0.14686333}
+      - {x: -0.65999997, y: 0}
+      - {x: -0.62235886, y: -0.09941038}
+      - {x: -0.51745296, y: -0.12608516}
+      - {x: -0.1778293, y: -0.16139282}
+      - {x: 0.009598443, y: -0.29372635}
+      - {x: 0.06981174, y: -0.15570903}
+      - {x: 0.4468631, y: -0.09667506}
+      - {x: 0.5723589, y: -0.16608536}
+      - {x: 0.6380426, y: -0.07099118}
+  m_UseDelaunayMesh: 0

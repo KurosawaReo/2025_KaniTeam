@@ -1,10 +1,16 @@
 fileFormatVersion: 2
-guid: b9f7600492f6f8d4cb48ae822ba74d6d
+guid: cb9ef263352acac42a331786af446469
 TextureImporter:
   internalIDToNameTable:
   - first:
-      213: -120401252546178708
-    second: Sazae_0
+      213: -8830386376024186871
+    second: Sakana3_0
+  - first:
+      213: -8812203938651946145
+    second: Sakana3_1
+  - first:
+      213: 901409309567908817
+    second: Sakana3_2
   externalObjects: {}
   serializedVersion: 13
   mipmaps:
@@ -100,13 +106,13 @@ TextureImporter:
     serializedVersion: 2
     sprites:
     - serializedVersion: 2
-      name: Sazae_0
+      name: Sakana3_0
       rect:
         serializedVersion: 2
         x: 0
         y: 0
-        width: 76
-        height: 72
+        width: 87
+        height: 48
       alignment: 0
       pivot: {x: 0, y: 0}
       border: {x: 0, y: 0, z: 0, w: 0}
@@ -115,8 +121,52 @@ TextureImporter:
       physicsShape: []
       tessellationDetail: -1
       bones: []
-      spriteID: c61197fd2bf345ef0800000000000000
-      internalID: -120401252546178708
+      spriteID: 90021ab506a247580800000000000000
+      internalID: -8830386376024186871
+      vertices: []
+      indices: 
+      edges: []
+      weights: []
+    - serializedVersion: 2
+      name: Sakana3_1
+      rect:
+        serializedVersion: 2
+        x: 89
+        y: 0
+        width: 80
+        height: 29
+      alignment: 0
+      pivot: {x: 0, y: 0}
+      border: {x: 0, y: 0, z: 0, w: 0}
+      customData: 
+      outline: []
+      physicsShape: []
+      tessellationDetail: -1
+      bones: []
+      spriteID: f534a54f433c4b580800000000000000
+      internalID: -8812203938651946145
+      vertices: []
+      indices: 
+      edges: []
+      weights: []
+    - serializedVersion: 2
+      name: Sakana3_2
+      rect:
+        serializedVersion: 2
+        x: 171
+        y: 1
+        width: 57
+        height: 36
+      alignment: 0
+      pivot: {x: 0, y: 0}
+      border: {x: 0, y: 0, z: 0, w: 0}
+      customData: 
+      outline: []
+      physicsShape: []
+      tessellationDetail: -1
+      bones: []
+      spriteID: 1db760ebdf2728c00800000000000000
+      internalID: 901409309567908817
       vertices: []
       indices: 
       edges: []

@@ -6,6 +6,8 @@ TagManager:
   tags:
   - Fish
   - Ground
+  - HitKyubankoban
+  - HitDodaizinbe
   layers:
   - Default
   - TransparentFX

@@ -1,10 +1,16 @@
 fileFormatVersion: 2
-guid: a9f8c742b36efab49bfdaa178f52dcf5
+guid: c9af5feb81ce7bf45a6d41d27a989b6b
 TextureImporter:
   internalIDToNameTable:
   - first:
       213: 5611817318501714322
     second: Sakana2_0
+  - first:
+      213: -2014942317324802778
+    second: Sakana2_1
+  - first:
+      213: 4798124360664437386
+    second: Sakana2_2
   externalObjects: {}
   serializedVersion: 13
   mipmaps:
@@ -96,32 +102,6 @@ TextureImporter:
     ignorePlatformSupport: 0
     androidETC2FallbackOverride: 0
     forceMaximumCompressionQuality_BC6H_BC7: 0
-  - serializedVersion: 4
-    buildTarget: Android
-    maxTextureSize: 2048
-    resizeAlgorithm: 0
-    textureFormat: -1
-    textureCompression: 1
-    compressionQuality: 50
-    crunchedCompression: 0
-    allowsAlphaSplitting: 0
-    overridden: 0
-    ignorePlatformSupport: 0
-    androidETC2FallbackOverride: 0
-    forceMaximumCompressionQuality_BC6H_BC7: 0
-  - serializedVersion: 4
-    buildTarget: WebGL
-    maxTextureSize: 2048
-    resizeAlgorithm: 0
-    textureFormat: -1
-    textureCompression: 1
-    compressionQuality: 50
-    crunchedCompression: 0
-    allowsAlphaSplitting: 0
-    overridden: 0
-    ignorePlatformSupport: 0
-    androidETC2FallbackOverride: 0
-    forceMaximumCompressionQuality_BC6H_BC7: 0
   spriteSheet:
     serializedVersion: 2
     sprites:
@@ -131,7 +111,7 @@ TextureImporter:
         serializedVersion: 2
         x: 0
         y: 0
-        width: 72
+        width: 87
         height: 48
       alignment: 0
       pivot: {x: 0, y: 0}
@@ -143,6 +123,50 @@ TextureImporter:
       bones: []
       spriteID: 2990ea55e1e21ed40800000000000000
       internalID: 5611817318501714322
+      vertices: []
+      indices: 
+      edges: []
+      weights: []
+    - serializedVersion: 2
+      name: Sakana2_1
+      rect:
+        serializedVersion: 2
+        x: 89
+        y: 0
+        width: 80
+        height: 29
+      alignment: 0
+      pivot: {x: 0, y: 0}
+      border: {x: 0, y: 0, z: 0, w: 0}
+      customData: 
+      outline: []
+      physicsShape: []
+      tessellationDetail: -1
+      bones: []
+      spriteID: 625e3f453ac7904e0800000000000000
+      internalID: -2014942317324802778
+      vertices: []
+      indices: 
+      edges: []
+      weights: []
+    - serializedVersion: 2
+      name: Sakana2_2
+      rect:
+        serializedVersion: 2
+        x: 171
+        y: 1
+        width: 57
+        height: 36
+      alignment: 0
+      pivot: {x: 0, y: 0}
+      border: {x: 0, y: 0, z: 0, w: 0}
+      customData: 
+      outline: []
+      physicsShape: []
+      tessellationDetail: -1
+      bones: []
+      spriteID: a825d893fac569240800000000000000
+      internalID: 4798124360664437386
       vertices: []
       indices: 
       edges: []

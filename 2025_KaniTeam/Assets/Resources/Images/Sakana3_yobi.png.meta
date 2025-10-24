@@ -1,10 +1,10 @@
 fileFormatVersion: 2
-guid: b9f7600492f6f8d4cb48ae822ba74d6d
+guid: bae4ff3e5b308d84ebc98d8f577df7d7
 TextureImporter:
   internalIDToNameTable:
   - first:
-      213: -120401252546178708
-    second: Sazae_0
+      213: -5670560841993049533
+    second: Sakana3_yobi_0
   externalObjects: {}
   serializedVersion: 13
   mipmaps:
@@ -100,13 +100,13 @@ TextureImporter:
     serializedVersion: 2
     sprites:
     - serializedVersion: 2
-      name: Sazae_0
+      name: Sakana3_yobi_0
       rect:
         serializedVersion: 2
         x: 0
         y: 0
-        width: 76
-        height: 72
+        width: 72
+        height: 48
       alignment: 0
       pivot: {x: 0, y: 0}
       border: {x: 0, y: 0, z: 0, w: 0}
@@ -115,8 +115,8 @@ TextureImporter:
       physicsShape: []
       tessellationDetail: -1
       bones: []
-      spriteID: c61197fd2bf345ef0800000000000000
-      internalID: -120401252546178708
+      spriteID: 34aa3c745fe1e41b0800000000000000
+      internalID: -5670560841993049533
       vertices: []
       indices: 
       edges: []
