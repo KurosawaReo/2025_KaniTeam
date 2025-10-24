@@ -8,7 +8,7 @@ public class FishBase : MonoBehaviour
     [Header("Fish Base Settings")]
     [SerializeField, Tooltip("重力")]               protected float    gravity   = 0.5f;
     [SerializeField, Tooltip("初期設定フラグ")]      protected bool     isSet     = false;
-    [SerializeField, Tooltip("ドロップ済かどうか")]   protected bool     isDropped = false;
+    [SerializeField, Tooltip("ドロップ済かどうか")]   public bool     isDropped = false;
     [SerializeField, Tooltip("魚のサイズ")]          public    FishSize fishSize;
     [SerializeField, Tooltip("魚の種類")]            public string fishType;
     protected Rigidbody2D rb;
