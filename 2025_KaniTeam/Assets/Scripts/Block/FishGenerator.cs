@@ -5,10 +5,10 @@ using KR_Lib.Object;
 /// <summary>
 /// 仮, ブロックを生成する.
 /// </summary>
-public class BlockGenerator : MonoBehaviour
+public class FishGenerator : MonoBehaviour
 {
     [Header("- prefab -")]
-    [SerializeField] PrefabKR block;
+    [SerializeField] PrefabKR fish;
 
     [Header("- value -")]
     [SerializeField] Vector3 spawnPos;
@@ -27,7 +27,7 @@ public class BlockGenerator : MonoBehaviour
         //一定時間ごと.
         if (timer.IntervalTime())
         {
-            var obj = block.NewPrefab();
+            var obj = fish.NewPrefab();
             obj.transform.position = spawnPos; //位置設定.
         }
     }

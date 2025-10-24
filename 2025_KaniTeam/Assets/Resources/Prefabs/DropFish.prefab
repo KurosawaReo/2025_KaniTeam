@@ -13,7 +13,7 @@ GameObject:
   - component: {fileID: 2504619187451347516}
   - component: {fileID: 752247471904721957}
   m_Layer: 0
-  m_Name: DropBlock
+  m_Name: DropFish
   m_TagString: Fish
   m_Icon: {fileID: 0}
   m_NavMeshLayer: 0
