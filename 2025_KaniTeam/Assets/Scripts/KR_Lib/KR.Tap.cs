@@ -1,6 +1,6 @@
 /*
    - KR_Lib.Tap -
-   ver.2025/09/11
+   ver.2025/10/25
 */
 using UnityEngine;
 using KR_Lib.Timer;
@@ -79,12 +79,12 @@ namespace KR_Lib.Tap
         /// </summary>
         public void TapDown()
         {
-            TryError();
+            CheckError();
 
             isTap    = true;  //タップ開始.
             isSwiped = false; //スワイプ処理未完了.
 
-            tmSwipe.Init();                      //計測開始.
+            tmSwipe.Reset();                     //計測開始.
             startTapPos = IN_Func.GetMousePos(); //座標保存.
 
             //一定時間内に押していれば.
@@ -93,7 +93,7 @@ namespace KR_Lib.Tap
                 tmDblTap.Time = 0; //リセット.
             }
             else {
-                tmDblTap.Init(); //計測開始.
+                tmDblTap.Reset(); //計測開始.
             }
         }
 
@@ -102,7 +102,7 @@ namespace KR_Lib.Tap
         /// </summary>
         public void TapUp()
         {
-            TryError();
+            CheckError();
 
             isTap         = false; //タップ終了.
             isDblTap      = false; //ダブルタップ終了.
@@ -159,9 +159,9 @@ namespace KR_Lib.Tap
         }
 
         /// <summary>
-        /// エラー処理.
+        /// エラーチェック.
         /// </summary>
-        private void TryError()
+        private void CheckError()
         {
             //エラーメッセージ.
             if (isError) { Debug.LogError("[MyTap] Update関数が実行されていません"); }

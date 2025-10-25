@@ -73,7 +73,7 @@ namespace KR_Lib.InspectorEditor
 
             //???
             var isDisable = IsDisable(attr, prop);
-            if (attr.isInvisible && isDisable)
+            if (attr.isInvisiOffMode && isDisable)
             {
                 return; //この先の処理をしない.
             }
@@ -109,7 +109,7 @@ namespace KR_Lib.InspectorEditor
                 }
             }
             //適切な高さを返す.
-            if (attr.isInvisible && IsDisable(attr, prop))
+            if (attr.isInvisiOffMode && IsDisable(attr, prop))
             {
                 return -EditorGUIUtility.standardVerticalSpacing;   //非表示時の表示位置.
             }

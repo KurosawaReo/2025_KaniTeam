@@ -1,6 +1,6 @@
 /*
    - KR_Lib.Position -
-   ver.2025/09/11
+   ver.2025/10/25
 */
 using UnityEngine;
 
@@ -53,7 +53,7 @@ namespace KR_Lib.Position
         /// <param name="size">オブジェクトサイズ</param>
         /// <param name="lim">限界座標(上下左右)</param>
         /// <returns>補正済座標</returns>
-        public static Vector3 FixPosInArea(Vector3 pos, Vector2 size, LBRT lim)
+        public static Vector3KR FixPosInArea(Vector3KR pos, Vector2 size, LBRT lim)
         {
             if (pos.x < lim.left   + size.x/2) { pos.x = lim.left   + size.x/2; }
             if (pos.y < lim.bottom + size.y/2) { pos.y = lim.bottom + size.y/2; }
@@ -86,5 +86,37 @@ namespace KR_Lib.Position
             var lPos = obj.transform.InverseTransformPoint(wPos);
             return lPos;
         }
+    }
+
+    /// <summary>
+    /// Vector3の機能拡張.
+    /// </summary>
+    public class Vector3KR
+    {
+        private Vector3 vec; //本体データ.
+
+        //x,y,zのアクセス.
+        public float x { get => vec.x; set => vec.x = value; }
+        public float y { get => vec.y; set => vec.y = value; }
+        public float z { get => vec.z; set => vec.z = value; }
+
+        //コンストラクタ.
+        public Vector3KR()
+            => vec = Vector3.zero;
+        public Vector3KR(Vector3 v)
+            => vec = v;
+        public Vector3KR(float x, float y, float z)
+            => vec = new Vector3(x, y, z);
+
+        //get.
+        public Vector3 GetVector3() => vec;
+
+        //「=」演算子用.
+        public static implicit operator Vector3(Vector3KR v) => v.vec;
+        public static implicit operator Vector3KR(Vector3 v) => new Vector3KR(v);
+        //「+」演算子用.
+        public static Vector3KR operator+(Vector3KR a, Vector3 b) => new Vector3KR(a.vec + b);
+        //「-」演算子用.
+        public static Vector3KR operator-(Vector3KR a, Vector3 b) => new Vector3KR(a.vec - b);
     }
 }

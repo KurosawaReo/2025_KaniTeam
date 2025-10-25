@@ -9,6 +9,7 @@ GameObject:
   serializedVersion: 6
   m_Component:
   - component: {fileID: 2853345477316151018}
+  - component: {fileID: 8298322360200649848}
   - component: {fileID: 2819151248938948916}
   - component: {fileID: 3934018867590493118}
   - component: {fileID: 5491907985987571452}
@@ -28,7 +29,7 @@ RectTransform:
   m_PrefabInstance: {fileID: 0}
   m_PrefabAsset: {fileID: 0}
   m_GameObject: {fileID: 7492183406115421661}
-  m_LocalRotation: {x: -0, y: -0, z: -0, w: 1}
+  m_LocalRotation: {x: 0, y: 0, z: 0, w: 1}
   m_LocalPosition: {x: 0, y: 0, z: 0}
   m_LocalScale: {x: 128.4, y: 128.4, z: 128.4}
   m_ConstrainProportionsScale: 1
@@ -37,9 +38,39 @@ RectTransform:
   m_LocalEulerAnglesHint: {x: 0, y: 0, z: 0}
   m_AnchorMin: {x: 0.5, y: 0.5}
   m_AnchorMax: {x: 0.5, y: 0.5}
-  m_AnchoredPosition: {x: 453, y: -0}
+  m_AnchoredPosition: {x: 453, y: 0}
   m_SizeDelta: {x: 100, y: 100}
   m_Pivot: {x: 0.5, y: 0.5}
+--- !u!114 &8298322360200649848
+MonoBehaviour:
+  m_ObjectHideFlags: 0
+  m_CorrespondingSourceObject: {fileID: 0}
+  m_PrefabInstance: {fileID: 0}
+  m_PrefabAsset: {fileID: 0}
+  m_GameObject: {fileID: 7492183406115421661}
+  m_Enabled: 1
+  m_EditorHideFlags: 0
+  m_Script: {fileID: 11500000, guid: fe87c0e1cc204ed48ad3b37840f39efc, type: 3}
+  m_Name: 
+  m_EditorClassIdentifier: 
+  m_Material: {fileID: 0}
+  m_Color: {r: 1, g: 1, b: 1, a: 0}
+  m_RaycastTarget: 1
+  m_RaycastPadding: {x: 0, y: 0, z: 0, w: 0}
+  m_Maskable: 1
+  m_OnCullStateChanged:
+    m_PersistentCalls:
+      m_Calls: []
+  m_Sprite: {fileID: 0}
+  m_Type: 0
+  m_PreserveAspect: 0
+  m_FillCenter: 1
+  m_FillMethod: 4
+  m_FillAmount: 1
+  m_FillClockwise: 1
+  m_FillOrigin: 0
+  m_UseSpriteMesh: 0
+  m_PixelsPerUnitMultiplier: 1
 --- !u!212 &2819151248938948916
 SpriteRenderer:
   m_ObjectHideFlags: 0
@@ -115,12 +146,11 @@ MonoBehaviour:
   m_Script: {fileID: 11500000, guid: aa856a30eb28af14eaa523d2c79e142a, type: 3}
   m_Name: 
   m_EditorClassIdentifier: 
-  minX: -350
-  maxX: 350
-  minY: 0
-  maxY: 1310
+  minX: -480
+  maxX: 480
+  minY: -50
+  maxY: 1600
   speed: 2
-  rectTransformX: 90
   isDragging: 0
   hasDraggingOnce: 0
   isFalling: 0

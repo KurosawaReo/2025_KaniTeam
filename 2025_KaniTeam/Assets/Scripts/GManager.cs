@@ -1,28 +1,24 @@
 using System.Collections;
-using Unity.VisualScripting;
 using UnityEngine;
 using static Common;
 
 public class GManager : MonoBehaviour
 {
-    [SerializeField] GameObject[] fishPrefabs;                  // 魚オブジェクトを格納する配列
+//  [SerializeField] GameObject[] fishPrefabs;                  // 魚オブジェクトを格納する配列
+//  [SerializeField] int settingFish = 0;                       // 配置された魚の数
 
     [SerializeField] bool ClearCheckStartFlag = false;          // クリアチェック開始フラグ
-
-
-    [SerializeField] int settingFish = 0;                       // 配置された魚の数
     [SerializeField] GameState gameState = GameState.Playing;   // ゲーム状態
 
-
-
-
+    [SerializeField] public int fishCount; //残りの魚の数.
 
     #region スタート
     void Start()
     {
-        GetFish();
+//        GetFish();
     }
 
+#if false
     /// <summary>
     /// 魚オブジェクトを取得する
     /// </summary>
@@ -36,31 +32,29 @@ public class GManager : MonoBehaviour
             Debug.Log(fish.name, this);
         }
     }
+#endif
     #endregion
 
     #region アップデート
     void Update()
     {
-        if (gameState == GameState.GameClear)
+        switch (gameState) 
         {
-            GameClear();
-            return;
-        }
-        else if (gameState == GameState.GameOver)
-        {
-            GameOver();
-            return;
-        }
-        else if (gameState == GameState.Playing)
-        {
-            // ゲームプレイ中の処理
-            ClearCheck();
-            OverCheck();
-        }
+            case GameState.Playing:
+                // ゲームプレイ中の処理.
+                ClearCheck();
+                OverCheck();
+                break;
+            case GameState.GameOver:
+                GameOver();
+                break;
+            case GameState.GameClear:
+                GameClear();
+                break;
 
+            default: Debug.LogError("Error"); break;
+        }
     }
-
-
 
     /// <summary>
     /// クリア判定処理
@@ -69,23 +63,29 @@ public class GManager : MonoBehaviour
     {
         if (ClearCheckStartFlag) return;
 
-        // クリア判定処理
-        for (int i = 0; i < fishPrefabs.Length; i++)
-        {
-            if (fishPrefabs[i].TryGetComponent<FishBase>(out var fish))
-            {
-                // 魚の状態を確認する
-                if (fish.isDropped)
-                    settingFish++;
-            }
-        }
+        //// クリア判定処理
+        //for (int i = 0; i < fishPrefabs.Length; i++)
+        //{
+        //    if (fishPrefabs[i].TryGetComponent<FishBase>(out var fish))
+        //    {
+        //        // 魚の状態を確認する
+        //        if (fish.isDropped)
+        //            settingFish++;
+        //    }
+        //}
 
-        if (settingFish >= fishPrefabs.Length && !ClearCheckStartFlag)
+        //if (settingFish >= fishPrefabs.Length && !ClearCheckStartFlag)
+        //{
+        //    ClearCheckStartFlag = true;
+        //    StartCoroutine(ClearDelay());
+        //}
+        //settingFish = 0;
+
+        if (fishCount <= 0)
         {
             ClearCheckStartFlag = true;
             StartCoroutine(ClearDelay());
         }
-        settingFish = 0;
     }
 
     /// <summary>
@@ -95,17 +95,16 @@ public class GManager : MonoBehaviour
     {
         if (gameState == GameState.GameOver) return;
 
+        //全ての魚を取得.
+        DragScript[] fishes = FindObjectsByType<DragScript>(FindObjectsSortMode.None);
+
         // ゲームオーバー判定処理
-        for (int i = 0; i < fishPrefabs.Length; i++)
+        foreach (var i in fishes)
         {
-            if (fishPrefabs[i].TryGetComponent<DragScript>(out var fish))
-            {
-                // 魚の状態を確認する
-                if (fish.isGameOver)
-                {
-                    gameState = GameState.GameOver;
-                    break;
-                }
+            // 魚の状態を確認する
+            if (i.isGameOver) {
+                gameState = GameState.GameOver;
+                break;
             }
         }
     }
@@ -113,10 +112,10 @@ public class GManager : MonoBehaviour
     /// <summary>
     /// クリア遅延処理
     /// </summary>
-    /// <returns></returns>
     IEnumerator ClearDelay()
     {
-        yield return new WaitForSeconds(3f);
+        yield return new WaitForSeconds(3f); //待機.
+
         if (gameState == GameState.Playing)
             gameState = GameState.GameClear;
     }

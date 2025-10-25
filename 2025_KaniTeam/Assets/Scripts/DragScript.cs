@@ -25,6 +25,10 @@ public class DragScript : MonoBehaviour, IDragHandler, IBeginDragHandler, IEndDr
 
     [SerializeField] public bool isGameOver = false;
 
+    [Header("script")]
+    [SerializeField] GManager gameMng;
+    public bool isDragged = false; //ドラッグ済みかどうか.
+
     private int fishCount = 0;
 
     private void Awake()
@@ -131,6 +135,8 @@ public class DragScript : MonoBehaviour, IDragHandler, IBeginDragHandler, IEndDr
         //もう置けないなら.
         if(fishCount <= 0)
         {
+            isDragged = true;
+            gameMng.fishCount++;
             gameObject.SetActive(false); //消去.
         }
         //まだ置けるなら.

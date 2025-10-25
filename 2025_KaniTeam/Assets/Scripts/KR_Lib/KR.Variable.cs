@@ -89,4 +89,22 @@ namespace KR_Lib.Variable
             now = init;
         }
     }
+
+    /// <summary>
+    /// Variable関数.
+    /// </summary>
+    public static class VA_Func
+    {
+        /// <summary>
+        /// 値のgetを試みる(初期化忘れ対策)
+        /// </summary>
+        public static T TryGet<T>(T value, string errorMng)
+        {
+            //nullならエラーを出す.
+            if (value == null) {
+                Debug.LogError(errorMng);
+            }
+            return value;
+        }
+    }
 }

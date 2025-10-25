@@ -1,6 +1,6 @@
 /*
    - KR_Lib.Timer -
-   ver.2025/10/03
+   ver.2025/10/25
 */
 using UnityEngine;
 using System.Collections;
@@ -20,6 +20,14 @@ namespace KR_Lib.Timer
         public int m;  //分.
         public int s;  //秒.
         public int cs; //コンマ秒.
+
+        /// <summary>
+        /// カウントダウン専用, 0秒になったかどうか.
+        /// </summary>
+        public bool IsEndTimer()
+        {
+            return (h <= 0 && m <= 0 && s <= 0 && cs <= 0);
+        }
     }
 
     /// <summary>
@@ -42,15 +50,6 @@ namespace KR_Lib.Timer
             tm.cs = (int)((_time - tm.h*3600 - tm.m*60 - tm.s)*100);
 
             return tm;
-        }
-
-        /// <summary>
-        /// カウントダウン専用, 0秒になったかどうか.
-        /// </summary>
-        public static bool IsEndTimerHMS(TimerHMS _time)
-        {
-            return (_time.h <= 0 && _time.m <= 0 &&
-                    _time.s <= 0 && _time.cs <= 0);
         }
 
         /// <summary>
@@ -80,14 +79,14 @@ namespace KR_Lib.Timer
         /// コンストラクタ.
         /// </summary>
         /// <param name="_initSec">リセット秒数</param>
-        public TimerKR(float _initSec)
+        public TimerKR(float _initSec = 0)
         {
             now = init = _initSec;
         }
         /// <summary>
         /// タイマーリセット.
         /// </summary>
-        public void Init()
+        public void Reset()
         {
             now = init;
         }
@@ -115,7 +114,7 @@ namespace KR_Lib.Timer
         {
             //タイマーが0になったら.
             if (now <= 0) {
-                Init(); //タイマーリセット.
+                Reset(); //タイマーリセット.
                 return true;
             }
             else {
