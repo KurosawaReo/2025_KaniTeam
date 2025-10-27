@@ -10,30 +10,34 @@ public class GManager : MonoBehaviour
     [SerializeField] bool ClearCheckStartFlag = false;          // クリアチェック開始フラグ
     [SerializeField] GameState gameState = GameState.Playing;   // ゲーム状態
 
-    [SerializeField] public int fishCount; //残りの魚の数.
+    [SerializeField] int fishCount;
+
+    /// <summary>
+    /// 魚をドロップし終わったサイン.
+    /// </summary>
+    void FishDropped()
+    {
+
+    }
 
     #region スタート
     void Start()
     {
-//        GetFish();
+        //GetAllFish();
     }
 
 #if false
     /// <summary>
     /// 魚オブジェクトを取得する
     /// </summary>
-    void GetFish()
+    void GetAllFish()
     {
-        // タグが同じオブジェクトを全て取得する
+        //fishタグのついたオブジェクトを取得.
         fishPrefabs = GameObject.FindGameObjectsWithTag("Fish");
-
-        foreach (GameObject fish in fishPrefabs)
-        {
-            Debug.Log(fish.name, this);
-        }
     }
 #endif
-    #endregion
+
+#endregion
 
     #region アップデート
     void Update()
@@ -63,25 +67,28 @@ public class GManager : MonoBehaviour
     {
         if (ClearCheckStartFlag) return;
 
-        //// クリア判定処理
-        //for (int i = 0; i < fishPrefabs.Length; i++)
-        //{
-        //    if (fishPrefabs[i].TryGetComponent<FishBase>(out var fish))
-        //    {
-        //        // 魚の状態を確認する
-        //        if (fish.isDropped)
-        //            settingFish++;
-        //    }
-        //}
+#if false
+        int settingFish = 0;
 
-        //if (settingFish >= fishPrefabs.Length && !ClearCheckStartFlag)
-        //{
-        //    ClearCheckStartFlag = true;
-        //    StartCoroutine(ClearDelay());
-        //}
-        //settingFish = 0;
+        // クリア判定処理
+        foreach (var i in fishPrefabs)
+        {
+            if (i.TryGetComponent<FishBase>(out var fish))
+            {
+                // 魚の状態を確認する
+                if (fish.isDropped) settingFish++;
+            }
+        }
 
-        if (fishCount <= 0)
+        if (settingFish >= fishPrefabs.Length && !ClearCheckStartFlag)
+        {
+            ClearCheckStartFlag = true;
+            StartCoroutine(ClearDelay());
+        }
+#endif
+        
+        //全ての魚をドロップし終わったら.
+        if (fishCount <= 0 && !ClearCheckStartFlag)
         {
             ClearCheckStartFlag = true;
             StartCoroutine(ClearDelay());
@@ -119,7 +126,7 @@ public class GManager : MonoBehaviour
         if (gameState == GameState.Playing)
             gameState = GameState.GameClear;
     }
-    #endregion
+#endregion
 
     #region ゲーム終了処理
     void GameClear()
@@ -127,7 +134,6 @@ public class GManager : MonoBehaviour
         // ゲームクリア処理
         Debug.Log("ゲームクリア！", this);
     }
-
 
     void GameOver()
     {

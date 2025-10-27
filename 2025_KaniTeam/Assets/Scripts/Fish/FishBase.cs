@@ -1,16 +1,20 @@
+/*
+   動物タワーバトルみたいなゲームを作る
+*/
 using UnityEngine;
 using static Common;
 
 [RequireComponent(typeof(Rigidbody2D))]
 public class FishBase : MonoBehaviour
 {
-    // 動物タワーバトルみたいなゲームを作る
     [Header("Fish Base Settings")]
-    [SerializeField, Tooltip("重力")]               protected float    gravity   = 0.5f;
+//  [SerializeField, Tooltip("GameManager")]         protected GManager scptGameMng;
+    [SerializeField, Tooltip("重力")]                protected float    gravity   = 0.5f;
     [SerializeField, Tooltip("初期設定フラグ")]      protected bool     isSet     = false;
-    [SerializeField, Tooltip("ドロップ済かどうか")]   public bool     isDropped = false;
+    [SerializeField, Tooltip("ドロップ済かどうか")]  public    bool     isDropped = false;
     [SerializeField, Tooltip("魚のサイズ")]          public    FishSize fishSize;
-    [SerializeField, Tooltip("魚の種類")]            public string fishType;
+    [SerializeField, Tooltip("魚の種類")]            public    string   fishType;
+
     protected Rigidbody2D rb;
 
     protected virtual void Start()

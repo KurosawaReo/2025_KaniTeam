@@ -135,8 +135,8 @@ public class DragScript : MonoBehaviour, IDragHandler, IBeginDragHandler, IEndDr
         //‚à‚¤’u‚¯‚È‚¢‚È‚ç.
         if(fishCount <= 0)
         {
+            gameMng.FishCount--;
             isDragged = true;
-            gameMng.fishCount++;
             gameObject.SetActive(false); //Á‹Ž.
         }
         //‚Ü‚¾’u‚¯‚é‚È‚ç.

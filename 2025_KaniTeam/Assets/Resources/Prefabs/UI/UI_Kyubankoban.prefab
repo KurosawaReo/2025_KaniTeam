@@ -156,9 +156,11 @@ MonoBehaviour:
   isFalling: 0
   Bigsize: 2
   pazuruObject: {fileID: 4056077948308007451}
-  fish: {fileID: 1543752648670887702, guid: 0096e36e08994e64a922a8c433fe5c83, type: 3}
+  fish: {fileID: 1543752648670887702, guid: 5bd794bb54a322f469c9a1113abf2671, type: 3}
   Maxfishcount: 1
   isGameOver: 0
+  gameMng: {fileID: 0}
+  isDragged: 0
 --- !u!50 &3629672536964720531
 Rigidbody2D:
   serializedVersion: 5
